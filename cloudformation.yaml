@@ -1,0 +1,63 @@
+Parameters:
+        ENV:
+          Type: String
+        TAG:
+          Type: String
+        VALUE1:
+           Type: String
+        VALUE2:
+           Type: String
+Resources:
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+                Service:
+                  - "lambda.amazonaws.com"
+            Action:
+                - "sts:AssumeRole"
+      Description: "Provides all required access to data-ingestor-nielsen"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/AWSLambda_FullAccess"
+
+      RoleName: !Join
+        - ''
+        - - 'ot-'
+          - !Ref ENV
+          - "-data-ingestion-create-csv-role"
+
+
+  Function:
+      Type: AWS::Lambda::Function
+      Properties:
+        Architectures:
+          - x86_64
+        Code:
+          ImageUri: !Join
+            - ''
+            - - !Ref AWS::AccountId
+              - '.dkr.ecr.'
+              - !Ref AWS::Region
+              - '.amazonaws.com/testLambda:'
+              - !Ref TAG
+
+        Description: "data-ingestor-nielsen"
+
+        Environment:
+          Variables:
+            KEY1: !Ref VALUE1
+            KEY2: !Ref VALUE2
+
+        FunctionName: !Join
+          - ''
+          - - 'ot-'
+            - !Ref ENV
+            - '-testLambda
+        MemorySize: 5000
+        PackageType: Image
+        Role: !GetAtt Role.Arn
+        Timeout: 600
