@@ -1,0 +1,4 @@
+{
+  "VALUE1": "{\"process\":\"INCREMENTAL\",\"vault_endpoint\":\"credentials/api/ontarget/ingest/aosdev/awsDetails\"}",
+  "VALUE2": "{\"process\":\"BULK\",\"vault_endpoint\":\"credentials/api/ontarget/ingest/aosdev/awsDetails\"}"
+}
