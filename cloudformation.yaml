@@ -48,9 +48,7 @@ Resources:
         Description: "data-ingestor-nielsen"
 
         Environment:
-          Variables:
-            KEY1: !Ref VALUE1
-            KEY2: !Ref VALUE2
+
 
         FunctionName: !Join
           - ''
