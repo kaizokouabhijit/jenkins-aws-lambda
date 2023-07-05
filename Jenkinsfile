@@ -8,11 +8,10 @@ pipeline {
                 script
                 {
                     def branch = env.GIT_COMMIT
-                    PARAMS = sh (
-        script: 'echo $(git show --name-only ${branch})',
-        returnStdout: true
-    ).trim()
-                    sh "echo ${PARAMS}"
+                    def output = sh(script: 'git show --name-only ${branch}', returnStdout: true).trim()
+                    def lines = output.split('\n')
+                    def lastPart = lines[-1]
+                    sh "echo ${lastPart}"
                 }
             }
         }
