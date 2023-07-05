@@ -1,2 +1,2 @@
 def handler(event=None, context):
-  print("Hello worlds")
+  print("Hello world of python")
