@@ -8,7 +8,11 @@ pipeline {
                 script
                 {
                     def branch = env.GIT_COMMIT
-                    sh 'git show --name-only ${branch}'
+                    PARAMS = sh (
+        script: 'echo $(git show --name-only ${branch})',
+        returnStdout: true
+    ).trim()
+                    sh "echo ${PARAMS}"
                 }
             }
         }
