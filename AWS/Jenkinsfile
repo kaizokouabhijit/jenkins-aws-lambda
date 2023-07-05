@@ -5,7 +5,7 @@ pipeline
   {
   stage('Build')
     {
-      sh 'echo "This is jenkins"'
+      sh 'echo "This is aws jenkins"'
     }
   }
 }
