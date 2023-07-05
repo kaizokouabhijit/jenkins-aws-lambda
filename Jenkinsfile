@@ -16,10 +16,7 @@ environment {
 
         stage ('Invoke_pipeline') {
             when {   
-		    beforeAgent false
-	         anyOf {
-		       changeset "$AWS_FOLDER/**"
-		     }
+		changeset "$AWS_FOLDER/**"
 		   }
             steps {
                 script
