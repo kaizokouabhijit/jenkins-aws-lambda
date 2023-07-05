@@ -15,8 +15,8 @@ environment {
         stage ('Invoke_pipeline') {
             when {   
 	         anyOf {
-		       // changeset "$DEPENDENT_FOLDER/AWS/**"
-            changeset "$DEPENDENT_FOLDER/DevOps/**"
+		       changeset "$DEPENDENT_FOLDER/AWS/**"
+            // changeset "$DEPENDENT_FOLDER/DevOps/**"
 		     }
 		   }
             steps {
