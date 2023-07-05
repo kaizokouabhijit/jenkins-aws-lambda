@@ -10,7 +10,6 @@ pipeline {
         }
 
         stage ('Invoke_pipeline') {
-            when { changeset "jenkins-aws-lambda/*" }
             steps {
                 build job: 'inner-pipeline', parameters: [
                 string(name: 'param1', value: "value1")
