@@ -15,9 +15,7 @@ environment {
         }
 
         stage ('Invoke_pipeline') {
-            when {   
-		changeset "$AWS_FOLDER/**"
-		   }
+            when {changeset "$AWS_FOLDER/**"}
             steps {
                 script
                 {
