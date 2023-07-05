@@ -2,8 +2,8 @@ pipeline {
     agent any
 environment {
         
-        AWS_FOLDER = 'jenkins-aws-lambda/AWS'
-	DEVOPS_FOLDER = 'jenkins-aws-lambda/DevOps'
+        AWS_FOLDER = 'jenkins-aws-lambda'
+	DEVOPS_FOLDER = 'jenkins-aws-lambda'
 	
    }
     stages 
@@ -18,7 +18,6 @@ environment {
             when {   
 	         anyOf {
 		       changeset "$AWS_FOLDER/**"
-            changeset "$DEVOPS_FOLDER/**"
 		     }
 		   }
             steps {
