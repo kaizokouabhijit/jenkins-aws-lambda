@@ -7,12 +7,8 @@ pipeline {
             steps {
                 script
                 {
-                    def branch = env.BRANCH_NAME
-                    if (branch.size() > 0)
-                    {
-                        VERSION = branch[0]
-                    }
-                    echo "branch is : ${VERSION}"
+                    def branch = env.GIT_COMMIT
+                    echo "commit ID is : ${branch}"
                 }
             }
         }
