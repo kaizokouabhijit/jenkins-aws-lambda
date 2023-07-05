@@ -5,7 +5,15 @@ pipeline {
     {
         stage('Start') {
             steps {
-                sh 'ls'
+                script
+                {
+                    def branch = env.BRANCH_NAME
+                    if (branch.size() > 0)
+                    {
+                        VERSION = branch[0]
+                    }
+                    echo "branch is : ${VERSION}"
+                }
             }
         }
 
