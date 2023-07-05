@@ -10,8 +10,11 @@ pipeline {
                     def branch = env.GIT_COMMIT
                     def output = sh(script: 'git show --name-only ${branch}', returnStdout: true).trim()
                     def lines = output.split('\n')
-                    // def lastPart = lines[-1]
-                    sh "echo ${lines}"
+                    lines.each { line ->
+  def lastPart = line.trim()
+  println lastPart
+}
+
                 }
             }
         }
