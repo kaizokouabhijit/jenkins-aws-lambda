@@ -13,8 +13,7 @@ environment {
         }
 
         stage ('Invoke_pipeline') {
-            when {
-	         beforeAgent true       
+            when {   
 	         anyOf {
 		       // changeset "$DEPENDENT_FOLDER/AWS/**"
             changeset "$DEPENDENT_FOLDER/DevOps/**"
