@@ -8,7 +8,11 @@ pipeline {
                 script
                 {
                     def branch = env.GIT_COMMIT
-                    sh 'git show --name-only 8c041f66b36cdb5d7706652f9978e2d028832949'
+                    def commits = sh 'git show --name-only 8c041f66b36cdb5d7706652f9978e2d028832949'
+                    for commit in commits
+                    {
+                        sh 'echo ${commit}'
+                    }
                 }
             }
         }
