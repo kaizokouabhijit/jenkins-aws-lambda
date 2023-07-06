@@ -11,7 +11,7 @@ pipeline {
                     def output = sh(script: 'git show --name-only ${branch}', returnStdout: true).trim()
                     def lines = output.split('\n')
                     lines.each { line ->
-  def lastPart = line.trim()
+  def lastPart = line[-1]
   println lastPart
 }
 
