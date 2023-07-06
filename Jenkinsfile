@@ -1,3 +1,5 @@
+def folderName=""
+
 pipeline {
     agent any
 
@@ -12,7 +14,7 @@ pipeline {
                 def commits = sh(script: 'git show --name-only ${commitID}', returnStdout: true).trim()
                  def lines = commits.split('\n')
                 def lastPart = lines[-1]
-                def folderName = lastPart.split('/')[0]
+                folderName = lastPart.split('/')[0]
                   echo "folder name is : ${folderName}"  
                 }
 
