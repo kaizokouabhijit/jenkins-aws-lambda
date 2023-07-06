@@ -4,14 +4,13 @@ pipeline {
     stages 
     {
         stage('Start') {
-            steps {
+            steps
+            {
                 def commitID = env.GIT_COMMIT
-                def output = sh(script: 'git show --name-only ${commitID}', returnStdout: true).trim()
+                def commits = sh(script: 'git show --name-only ${commitID}', returnStdout: true).trim()
                 def lines = output.split('\n')
                 def lastPart = lines[-1]
-
-// println lastPart
-
+                
             }
         }
 
