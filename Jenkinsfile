@@ -12,7 +12,7 @@ pipeline {
                     def lines = output.split('\n')
                     lines.each { line ->
   def lastPart = line[-1]
-  println lastPart
+  echo "$lastPart"
 }
 
                 }
