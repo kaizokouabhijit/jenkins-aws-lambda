@@ -8,7 +8,7 @@ pipeline {
                 script
                 {
                     def commitID = env.GIT_COMMIT
-                    def commits = sh 'git diff-tree --no-commit-id --name-only ${commitID} -r'
+                    def commits = sh 'git show --stat --oneline ${commitID}'
                     echo ${commits}
 
                 }
