@@ -12,7 +12,7 @@ pipeline {
                 def commits = sh(script: 'git show --name-only ${commitID}', returnStdout: true).trim()
                  def lines = commits.split('\n')
                 def lastPart = lines[-1]
-                echo "The filename is : ${lastPart}"
+                def folderName = lastPart.split('/')[0]
                 }
 
                 
