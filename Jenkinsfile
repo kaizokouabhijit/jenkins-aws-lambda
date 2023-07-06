@@ -5,14 +5,13 @@ pipeline {
     {
         stage('Start') {
             steps {
-                script
-                {
-                    def commitID = env.GIT_COMMIT
-                    def commits = sh 'git show --stat --oneline ${commitID}'
-                    def fileName = commits =~ /(\S+)\s\|\s\d+\s[+-]/[0][1]
-                    echo '${fileName}'
-
-                }
+               script {
+         PARAMS = sh (
+        script: 'git log --name-only --oneline ${commitID}',
+        returnStdout: true
+    ).trim()
+}
+                sh "echo ${PARAMS}"
             }
         }
 
