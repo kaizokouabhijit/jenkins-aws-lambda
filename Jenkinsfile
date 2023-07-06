@@ -14,7 +14,7 @@ pipeline {
                     echo "Last commit was: ${lastCommitID}"
                 def commitID = env.GIT_COMMIT
                     echo "Current commit is : ${commitID}"
-                def commits = sh(script: 'git show --name-only ${lastCommitID}..${commitID}', returnStdout: true).trim()
+                def commits = sh(script: 'git show --name-only ${commitID}', returnStdout: true).trim()
                 //  def lines = commits.split('\n')
                 // def lastPart = lines[-1]
                 // folderName = lastPart.split('/')[0]
