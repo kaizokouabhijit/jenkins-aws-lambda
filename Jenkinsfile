@@ -11,7 +11,7 @@ pipeline {
                 script
                 {
                     def lastCommitID = env.GIT_PREVIOUS_COMMIT
-                    echo "last commit was: ${lastCommitID}"
+                    echo "Last commit was: ${lastCommitID}"
                 def commitID = env.GIT_COMMIT
                     echo "current commit is : ${commitID}"
                 def commits = sh(script: 'git show --name-only ${commitID}', returnStdout: true).trim()
