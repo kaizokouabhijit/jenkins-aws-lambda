@@ -23,7 +23,7 @@ pipeline {
 
         stage ('Invoke_pipeline') {
             steps {
-               sh 'echo folder name is : ${folderName}'
+               sh 'echo folder name is : "${folderName}"'
             }
         }
 
