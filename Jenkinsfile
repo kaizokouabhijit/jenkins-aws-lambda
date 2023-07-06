@@ -10,7 +10,7 @@ pipeline {
                 {
                 def commitID = env.GIT_COMMIT
                 def commits = sh(script: 'git show --name-only ${commitID}', returnStdout: true).trim()
-                // def lines = output.split('\n')
+                // def lines = commits.split('\n')
                 // def lastPart = lines[-1]
                 }
 
