@@ -18,7 +18,7 @@ pipeline {
                 //  def lines = commits.split('\n')
                 // def lastPart = lines[-1]
                 // folderName = lastPart.split('/')[0]
-                 echo "commit ID : ${commits}"
+                 echo "commit ID : ${commits[0]}"
                 }
 
                 
