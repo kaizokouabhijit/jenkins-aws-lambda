@@ -23,7 +23,7 @@ pipeline {
                         def lines = commit.split('\n')
                         def lastPart = lines[-1]
                         folderName = lastPart.split('/')[0]
-                        echo "folder name is : ${folderName}"
+                        echo "folder name is : ${lines}"
                     }
                 }
 
