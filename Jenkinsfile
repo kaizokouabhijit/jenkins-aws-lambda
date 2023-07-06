@@ -5,13 +5,13 @@ pipeline {
     {
         stage('Start') {
             steps {
-               script {
-         PARAMS = sh (
-        script: 'git log --name-only --oneline ${commitID}',
-        returnStdout: true
-    ).trim()
-}
-                sh "echo ${PARAMS}"
+                def commitID = env.GIT_COMMIT
+                def output = sh(script: 'git show --name-only ${commitID}', returnStdout: true).trim()
+                def lines = output.split('\n')
+                def lastPart = lines[-1]
+
+// println lastPart
+
             }
         }
 
