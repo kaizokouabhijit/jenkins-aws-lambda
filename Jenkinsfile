@@ -9,7 +9,8 @@ pipeline {
                 {
                     def commitID = env.GIT_COMMIT
                     def commits = sh 'git show --stat --oneline ${commitID}'
-                    echo ${commits}
+                    def fileName = commits =~ /(\S+)\s\|\s\d+\s[+-]/[0][1]
+                    echo '${fileName}'
 
                 }
             }
