@@ -13,7 +13,7 @@ pipeline {
                  def lines = commits.split('\n')
                 def lastPart = lines[-1]
                 def folderName = lastPart.split('/')[0]
-                    
+                  echo "folder name is : ${folderName}"  
                 }
 
                 
@@ -23,7 +23,10 @@ pipeline {
 
         stage ('Invoke_pipeline') {
             steps {
-               sh 'echo folder name is : "${folderName}"'
+               script
+                {
+                    echo "folder name is : ${folderName}"
+                }
             }
         }
 
