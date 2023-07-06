@@ -7,14 +7,8 @@ pipeline {
             steps {
                 script
                 {
-                    def branch = env.GIT_COMMIT
-                    def output = sh(script: 'git show --name-only ${branch}', returnStdout: true).trim()
-                    def lines = output.split('\n')
-                    for (line in lines)
-                    {
-                        def lastPart = line[-1]
-                        echo "${lastPart}"
-                    }
+                    def commitID = env.GIT_COMMIT
+                    def commits = sh 'git show --name-only ${commitID}'                   
 
                 }
             }
