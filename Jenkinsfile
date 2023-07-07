@@ -32,7 +32,8 @@ pipeline {
                         if (lastPart =~ /\.py$|\.yaml$/)
                         {
                             folderName = lastPart.split('/')[0]
-                            pythonLambda.add(folderName)
+                            if(!pythonLambda.contains(folderName))
+                            { pythonLambda.add(folderName)}
                             
                         }
                         echo "Lmabda folder name : ${pythonLambda}"
