@@ -24,9 +24,10 @@ pipeline {
                     def commitList = revlist.split('\n')
                     for (commit in commitList)
                     {
-                       def commits = sh(script: 'git show --name-only ${commit}', returnStdout: true).trim()
+                       def commits = sh(script: "git show --name-only ${commit}", returnStdout: true).trim()
                         def lines = commits.split('\n')
                         def lastPart = lines[-1]
+                        echo "file path is ${lastPart}"
                         def fileExtension = lastPart =~ /\.py$|\.yaml$/
 if (fileExtension) {
     echo "File has a .py or .yaml extension"
