@@ -12,16 +12,16 @@ pipeline {
                 {
                     // def commitList = sh(script: "echo \$(git log -3)", returnStdout: true)
                    
-                    def lines = commitList.split(' ')
+                    // def lines = commitList.split(' ')
                      echo "here"
-                    def firstPart = lines[0]
-                    echo "Now here :${firstPart}"
+                    // def firstPart = lines[0]
+                    // echo "Now here :${firstPart}"
                     def lastCommitID = env.GIT_PREVIOUS_COMMIT
                     echo "Last commit was: ${lastCommitID}"
                 def commitID = env.GIT_COMMIT
                     echo "Current commit is : ${commitID}"
                     // def commits = sh "git rev-parse ${lastCommitID}..HEAD"
-                def commitList = sh(script: "echo \$(git log --oneline ${lastCommitID})~...HEAD", returnStdout: true)
+                def commitList = sh(script: "echo \$(git log --oneline ${lastCommitID}~...HEAD)", returnStdout: true)
                 //  def lines = commits.split('\n')
                 // def lastPart = lines[-1]
                 // folderName = lastPart.split('/')[0]
