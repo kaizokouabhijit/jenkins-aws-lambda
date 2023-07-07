@@ -21,11 +21,9 @@ pipeline {
                 def commitID = env.GIT_COMMIT
                     echo "Current commit is : ${commitID}"
                     // def commits = sh "git rev-parse ${lastCommitID}..HEAD"
-               def commitList = sh(script: "echo \$(git log --oneline ${lastCommitID}~...HEAD)", returnStdout: true).trim()
-                //  def lines = commits.split('\n')
-                // def lastPart = lines[-1]
-                // folderName = lastPart.split('/')[0]
-                 echo "commit ID : ${commitList}"
+               def commitList = sh(script: "git log --oneline ${lastCommitID}~...HEAD | awk '{print $1}'", returnStdout: true).trim()
+                echo "commit ID: ${commitList}"
+
                 }
 
                 
