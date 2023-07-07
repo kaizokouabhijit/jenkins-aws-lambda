@@ -1,5 +1,6 @@
 def folderName=""
-def pythonLambda=[]
+def buildLambda=[]
+def deployLambda=[]
 
 pipeline {
     agent any
@@ -29,21 +30,22 @@ pipeline {
                         def lines = commits.split('\n')
                         def lastPart = lines[-1]
                         echo "file path is ${lastPart}"
-                        if (lastPart =~ /\.py$|\.yaml$/)
+                        if (lastPart =~ /\.py$|\.java$/)
                         {
                             folderName = lastPart.split('/')[0]
-                            if(!pythonLambda.contains(folderName))
-                            { pythonLambda.add(folderName)}
+                            if(!buildLambda.contains(folderName))
+                            { buildLambda.add(folderName)}
                             
                         }
-                        echo "Lmabda folder name : ${pythonLambda}"
-                        // def fileExtension = lastPart =~ /\.py$|\.yaml$/
-
-
-                        // folderName = lastPart.split('/')[0]
-                        // echo "folder name is : ${folderName}"
+                        if (lastPart =~/\.yaml$|Jenkinsfile$/)
+                        {
+                            folderName = lastPart.split('/')[0]
+                            if(!deployLambda.contains(folderName))
+                            { deployLambda.add(folderName)}
+                        }
+                       
                     }
-
+                             echo "${deployLambda}"
                 }
 
                 
