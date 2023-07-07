@@ -11,6 +11,7 @@ pipeline {
                 script
                 {
                     def commitList = sh "git log -3"
+                    echo "here"
                     def lines = commitList.split('\n')
                     def firstPart = lines[0]
                     echo "${firstPart}"
