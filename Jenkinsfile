@@ -25,15 +25,11 @@ pipeline {
                     for (commit in commitList)
                     {
                        def commits = sh(script: 'git show --name-only ${commit}', returnStdout: true).trim()
-                        echo "show command results are : ${commits}"
+                        def lines = commits.split('\n')
+                        def lastPart = lines[-1]
+                        folderName = lastPart.split('/')[0]
+                        echo "folder name is : ${folderName}"
                     }
-                //         echo "commit id is ${commit}"
-                // def commits = sh(script: 'git show --name-only ${commit}', returnStdout: true).trim()
-                //  def lines = commits.split('\n')
-                // def lastPart = lines[-1]
-                // folderName = lastPart.split('/')[0]
-                //         echo "folder name is : ${folderName}"
-                    
 
                 }
 
