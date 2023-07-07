@@ -22,6 +22,7 @@ pipeline {
                 echo "commit ID: ${revlist}"
                     for (commit in revlist)
                     {
+                        echo "commit id is ${commit}"
                 def commits = sh(script: 'git show --name-only ${commit}', returnStdout: true).trim()
                  def lines = commits.split('\n')
                 def lastPart = lines[-1]
