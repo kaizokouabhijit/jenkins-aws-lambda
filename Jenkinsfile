@@ -27,8 +27,15 @@ pipeline {
                        def commits = sh(script: 'git show --name-only ${commit}', returnStdout: true).trim()
                         def lines = commits.split('\n')
                         def lastPart = lines[-1]
-                        folderName = lastPart.split('/')[0]
-                        echo "folder name is : ${folderName}"
+                        def fileExtension = lastPart =~ /\.py$|\.yaml$/
+if (fileExtension) {
+    echo "File has a .py or .yaml extension"
+} else {
+    echo "File does not have a .py or .yaml extension"
+}
+
+                        // folderName = lastPart.split('/')[0]
+                        // echo "folder name is : ${folderName}"
                     }
 
                 }
