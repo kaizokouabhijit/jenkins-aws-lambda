@@ -20,15 +20,19 @@ pipeline {
                     // def commitList = sh(script: "git show --name-only '${lastCommitID}'~...HEAD | tail -n+2", returnStdout: true).trim()
                     def revlist = sh(script: "git rev-list ${lastCommitID}~...HEAD", returnStdout: true).trim()
                 echo "commit ID: ${revlist}"
-                    for (commit in revlist)
+
+                    def commitList = revlist.split('\n')
+                    for (commit in commitList)
                     {
-                        echo "commit id is ${commit}"
-                def commits = sh(script: 'git show --name-only ${commit}', returnStdout: true).trim()
-                 def lines = commits.split('\n')
-                def lastPart = lines[-1]
-                folderName = lastPart.split('/')[0]
-                        echo "folder name is : ${folderName}"
+                        echo "${commit}"
                     }
+                //         echo "commit id is ${commit}"
+                // def commits = sh(script: 'git show --name-only ${commit}', returnStdout: true).trim()
+                //  def lines = commits.split('\n')
+                // def lastPart = lines[-1]
+                // folderName = lastPart.split('/')[0]
+                //         echo "folder name is : ${folderName}"
+                    
 
                 }
 
