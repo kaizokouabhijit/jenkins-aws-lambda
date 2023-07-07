@@ -10,7 +10,7 @@ pipeline {
             {
                 script
                 {
-                    sh "git log --oneline"
+                    sh "git log -3"
                     def lastCommitID = env.GIT_PREVIOUS_COMMIT
                     echo "Last commit was: ${lastCommitID}"
                 def commitID = env.GIT_COMMIT
