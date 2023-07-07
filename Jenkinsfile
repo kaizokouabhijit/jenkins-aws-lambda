@@ -35,6 +35,7 @@ pipeline {
                             pythonLambda.add(folderName)
                             
                         }
+                        echo "Lmabda folder name : ${pythonLambda}"
                         // def fileExtension = lastPart =~ /\.py$|\.yaml$/
 
 
