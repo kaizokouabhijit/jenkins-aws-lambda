@@ -10,7 +10,7 @@ pipeline {
             {
                 script
                 {
-                    def date=$(date -d "yesterday 13:00 " '+%Y-%m-%d' )
+                    // def date=$(date -d "yesterday 13:00 " '+%Y-%m-%d' )
                     def lastCommitID = env.GIT_PREVIOUS_COMMIT
                     echo "Last commit was: ${lastCommitID}"
                 def commitID = env.GIT_COMMIT
