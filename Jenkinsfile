@@ -24,7 +24,8 @@ pipeline {
                     def commitList = revlist.split('\n')
                     for (commit in commitList)
                     {
-                        echo "${commit}"
+                       def commits = sh(script: 'git show --name-only ${commit}', returnStdout: true).trim()
+                        echo "show command results are : ${commits}"
                     }
                 //         echo "commit id is ${commit}"
                 // def commits = sh(script: 'git show --name-only ${commit}', returnStdout: true).trim()
