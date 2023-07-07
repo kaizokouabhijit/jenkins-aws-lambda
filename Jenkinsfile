@@ -12,7 +12,7 @@ pipeline {
                 {
                     def commitList = sh(script: "echo \$(git log -3)", returnStdout: true).trim()
                    
-                    def lines = commitList.split('\n')
+                    def lines = commitList.split('\t')
                      echo "here"
                     def firstPart = lines[0]
                     echo "Now here :${firstPart}"
