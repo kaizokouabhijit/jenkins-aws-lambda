@@ -12,7 +12,7 @@ pipeline {
                 {
                     def lastCommitID = env.GIT_PREVIOUS_COMMIT
                     // def branch = env.BRANCH_NAME
-                    echo "Branch name: ${branch}"
+                    // echo "Branch name: ${branch}"
                     echo "Last commit was: ${lastCommitID}"
                 def commitID = env.GIT_COMMIT
                     echo "Current commit is : ${commitID}"
