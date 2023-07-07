@@ -18,8 +18,16 @@ pipeline {
                     echo "Current commit is : ${commitID}"
                // def commitList = sh(script: "git log --oneline '${lastCommitID}'~...HEAD | awk '{print \$1}'", returnStdout: true).trim()
                     // def commitList = sh(script: "git show --name-only '${lastCommitID}'~...HEAD | tail -n+2", returnStdout: true).trim()
-                    def revlist = sh(script: "git rev-list --all", returnStdout: true).trim()
+                    def revlist = sh(script: "git rev-list ${lastCommitID}", returnStdout: true).trim()
                 echo "commit ID: ${revlist}"
+                    for (commit in revlist)
+                    {
+                def commits = sh(script: 'git show --name-only ${commit}', returnStdout: true).trim()
+                 def lines = commits.split('\n')
+                def lastPart = lines[-1]
+                folderName = lastPart.split('/')[0]
+                        echo "folder name is : ${folderName}"
+                    }
 
                 }
 
