@@ -11,8 +11,9 @@ pipeline {
                 script
                 {
                     def commitList = sh "git log -3"
-                    echo "here"
+                   
                     def lines = commitList.split('\n')
+                     echo "here"
                     def firstPart = lines[0]
                     echo "${firstPart}"
                     def lastCommitID = env.GIT_PREVIOUS_COMMIT
