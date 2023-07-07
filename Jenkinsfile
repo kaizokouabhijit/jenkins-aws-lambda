@@ -1,4 +1,5 @@
 def folderName=""
+def pythonLambda=[]
 
 pipeline {
     agent any
@@ -28,12 +29,14 @@ pipeline {
                         def lines = commits.split('\n')
                         def lastPart = lines[-1]
                         echo "file path is ${lastPart}"
-                        def fileExtension = lastPart =~ /\.py$|\.yaml$/
-if (fileExtension) {
-    echo "File has a .py or .yaml extension"
-} else {
-    echo "File does not have a .py or .yaml extension"
-}
+                        if (lastPart =~ /\.py$|\.yaml$/)
+                        {
+                            folderName = lastPart.split('/')[0]
+                            pythonLambda.add(folderName)
+                            
+                        }
+                        // def fileExtension = lastPart =~ /\.py$|\.yaml$/
+
 
                         // folderName = lastPart.split('/')[0]
                         // echo "folder name is : ${folderName}"
