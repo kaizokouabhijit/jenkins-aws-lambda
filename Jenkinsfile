@@ -52,7 +52,7 @@ pipeline {
                script
                 {
                     // Trigger Jenkinsfile2 as a separate job
-                    build job: 'AWS/Jenkinsfile', parameters: [
+                    build job: '/AWS/Jenkinsfile', parameters: [
                         string(name: 'PARAM1', value: 'Abhijit'),
                         string(name: 'PARAM2', value: 'value2')
                     ]
