@@ -52,7 +52,7 @@ pipeline {
                script
                 {
                 def rootDir = pwd()
-    def exampleModule = load "${rootDir}@script/Jenkinsfile"
+    def exampleModule = load "AWS/Jenkinsfile"
                 }
             }
         }
