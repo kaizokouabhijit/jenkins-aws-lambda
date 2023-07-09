@@ -13,13 +13,7 @@ pipeline {
                 script
                 {
                     def lastCommitID = env.GIT_PREVIOUS_COMMIT
-                    // def branch = env.BRANCH_NAME
-                    // echo "Branch name: ${branch}"
                     echo "Last commit was: ${lastCommitID}"
-                def commitID = env.GIT_COMMIT
-                    echo "Current commit is : ${commitID}"
-               // def commitList = sh(script: "git log --oneline '${lastCommitID}'~...HEAD | awk '{print \$1}'", returnStdout: true).trim()
-                    // def commitList = sh(script: "git show --name-only '${lastCommitID}'~...HEAD | tail -n+2", returnStdout: true).trim()
                     def revlist = sh(script: "git rev-list ${lastCommitID}~...HEAD", returnStdout: true).trim()
                 echo "commit ID: ${revlist}"
 
@@ -57,7 +51,11 @@ pipeline {
             steps {
                script
                 {
-                    echo "folder name is : ${folderName}"
+                    // Trigger Jenkinsfile2 as a separate job
+                    build job: 'jenkins-aws-lambda/AWS/Jenkinsfile', parameters: [
+                        string(name: 'PARAM1', value: 'Abhijit'),
+                        string(name: 'PARAM2', value: 'value2')
+                    ]
                 }
             }
         }
