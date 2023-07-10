@@ -69,7 +69,7 @@ pipeline {
     post {
         success {
             script {
-                buildLambda.remove('${folder}')
+                buildLambda.remove(0)
                 if (buildLambda.size()>0)
                 { echo "from post action, buildLmabda: ${buildLambda}" 
                     build 'multi-config-pipeline-personal'}
