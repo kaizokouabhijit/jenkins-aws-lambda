@@ -137,7 +137,7 @@ def readParams(directory)
 {
 
          PARAMS = sh (
-        script: "echo \$(cat "${directory}"/deployment_param_config)",
+        script: "echo \$(cat ${directory}/deployment_param_config)",
         returnStdout: true
     ).trim()
 
