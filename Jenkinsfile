@@ -39,7 +39,7 @@ pipeline {
                         }
                        
                     }
-                             echo "${deployLambda}"
+                             echo "All values in buildLambda are: ${buildLambda}"
                 }
 
                 
@@ -54,7 +54,7 @@ pipeline {
                    if (buildLambda.size()>0)
                     {
                         folder = buildLambda[0]
-                        echo "folder is : ${folder}"
+                        echo "first folder in buildLambda is : ${folder}"
                     }
                 }
             }
@@ -70,7 +70,9 @@ pipeline {
         success {
             script {
                 buildLambda.remove('${folder}')
-                build 'multi-config-pipeline-personal'
+                if (buildLambda.size()>0)
+                { echo "from post action, buildLmabda: ${buildLambda}" 
+                    build 'multi-config-pipeline-personal'}
             }
         }
     }
