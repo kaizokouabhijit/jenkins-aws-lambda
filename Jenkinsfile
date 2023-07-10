@@ -69,8 +69,8 @@ pipeline {
     post {
         success {
             script {
-                buildLambda.remove('folder')
-                echo "buildLmabda is : ${buildLambda}"
+                buildLambda.remove(${folder})
+                build 'multi-config-pipeline-personal'
             }
         }
     }
