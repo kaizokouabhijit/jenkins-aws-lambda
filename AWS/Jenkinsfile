@@ -6,7 +6,7 @@ pipeline
   stage('Build')
     {
       steps{
-           sh 'echo- testing "${param1}"'
+           sh 'echo testing "${param1}"'
            }
       
     }
