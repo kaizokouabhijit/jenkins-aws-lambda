@@ -11,12 +11,13 @@ pipeline
     {
       steps{
            script {
-                    withSonarQubeEnv('SonarqubeLocal') {  // Ensure 'Sonar' matches your SonarQube server name configured in Jenkins
+                    withSonarQubeEnv('SonarqubeLocal') {
                         sh "${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=projectKey \
                             -Dsonar.projectName=project-name \
                             -Dsonar.projectVersion=1 \
-                            -Dsonar.sources=."
+                            -Dsonar.sources=. \
+                            -Dsonar.host.url=http://localhost:9000"
                     }
                 }
            }
