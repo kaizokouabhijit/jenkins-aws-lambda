@@ -6,7 +6,15 @@ pipeline
   stage('Build')
     {
       steps{
-           which sonar-scanner
+           script {
+                    withSonarQubeEnv('Sonar') {  // Ensure 'Sonar' matches your SonarQube server name configured in Jenkins
+                        sh "${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=projectKey \
+                            -Dsonar.projectName=project-name \
+                            -Dsonar.projectVersion=1 \
+                            -Dsonar.sources=."
+                    }
+                }
            }
       
     }
