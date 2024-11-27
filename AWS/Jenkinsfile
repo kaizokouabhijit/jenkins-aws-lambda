@@ -1,6 +1,10 @@
 pipeline
 {
   agent any
+  environment {
+        // Ensure the SonarQube scanner tool is available
+        scannerHome = tool 'SonarqubeLocal' // 'SonarScanner' should match the tool name configured in Jenkins
+    }
   stages
   {
   stage('Build')
