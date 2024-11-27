@@ -1,27 +1,26 @@
-pipeline
-{
-  agent any
-  environment {
-        // Ensure the SonarQube scanner tool is available
-        scannerHome = tool 'SonarqubeLocal' // 'SonarScanner' should match the tool name configured in Jenkins
+pipeline {
+    agent any
+
+    environment {
+        SONARQUBE_SERVER = 'http://localhost:9001'
+        SONARQUBE_TOKEN = 'squ_d2b13faf8b5a4741bd22192dbab2a11d9d6ad765'
     }
-  stages
-  {
-  stage('Build')
-    {
-      steps{
-           script {
-                    withSonarQubeEnv('SonarqubeLocal') {
-                        sh "${scannerHome}/bin/sonar-scanner \
-                            -Dsonar.projectKey=projectKey \
-                            -Dsonar.projectName=project-name \
-                            -Dsonar.projectVersion=1 \
-                            -Dsonar.sources=. \
-                            -Dsonar.host.url=http://localhost:9001"
-                    }
+
+    stages {
+              
+
+        stage('Run SonarQube Analysis') {
+            steps {
+                script {
+                    sh '/opt/gradle/gradle-8.1.1/bin/gradle -Dsonar.login=$SONARQUBE_TOKEN -Dsonar.host.url=$SONARQUBE_SERVER sonar'
                 }
-           }
-      
+            }
+        }
     }
-  }
+
+    post {
+        always {
+            cleanWs() // Clean up workspace after build
+        }
+    }
 }
