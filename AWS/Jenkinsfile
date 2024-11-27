@@ -17,7 +17,7 @@ pipeline
                             -Dsonar.projectName=project-name \
                             -Dsonar.projectVersion=1 \
                             -Dsonar.sources=. \
-                            -Dsonar.host.url=http://localhost:9000"
+                            -Dsonar.host.url=http://localhost:9001"
                     }
                 }
            }
