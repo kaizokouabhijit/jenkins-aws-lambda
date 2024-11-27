@@ -1,0 +1,22 @@
+plugins {
+    id 'org.sonarqube' version '4.0.0.2929' // SonarQube plugin
+    id 'com.github.johnrengelman.shadow' version '7.1.2' // Optional, for handling dependencies, if needed
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Any necessary dependencies for your Python project
+}
+
+sonar {
+    properties {
+        property "sonar.host.url", "http://localhost:9001"
+        property "sonar.login", "squ_d2b13faf8b5a4741bd22192dbab2a11d9d6ad765"
+        property "sonar.projectKey", "python-project"
+        property "sonar.projectName", "AWS"
+        property "sonar.sources", "."
+    }
+}
